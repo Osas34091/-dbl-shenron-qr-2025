@@ -44,18 +44,16 @@
     <div class="container py-4">
       <form id="dbl-qr" method="POST" action="/" enctype="multipart/form-data">
         <div class="card bg-dark border-light mb-4">
-        <div class="card-header">Códigos de amigo</div>
-        <div class="card-body">
-          <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 1..." name="dbl-qr-1">
-          <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 2..." name="dbl-qr-2">
-          <input class="form-control mb-3" type="text" minlength="8" maxlength="8" placeholder="Friend 3..." name="dbl-qr-3">
-          <button type="submit" class="btn btn-primary">Generar códigos</button>
+          <div class="card-header text-white">Códigos de amigo</div>
+          <div class="card-body">
+            <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 1..." name="dbl-qr-1">
+            <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 2..." name="dbl-qr-2">
+            <input class="form-control mb-3" type="text" minlength="8" maxlength="8" placeholder="Friend 3..." name="dbl-qr-3">
+            <button type="submit" class="btn btn-primary w-90">Generar códigos</button>
+          </div>
         </div>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Generar Códigos</button>
-        
       </form>
-    </div>
+
       <div class="row mt-4 qr-display text-center">
         <div class="col" id="qr-display-1"></div>
         <div class="col" id="qr-display-2"></div>
