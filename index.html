@@ -30,25 +30,6 @@
   <div class="container py-5">
     <form id="dbl-qr" method="POST" action="#" enctype="multipart/form-data">
       <div class="card bg-dark border-light mb-4">
-        <div class="card-header">Método de generación QR</div>
-        <div class="card-body">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="qr-method" id="qr-auto" value="auto" checked>
-            <label class="form-check-label" for="qr-auto">Automático: No requiere archivo</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="qr-method" id="qr-manual" value="manual">
-            <label class="form-check-label" for="qr-manual">Manual: Subir código QR</label>
-          </div>
-          <div class="mt-3">
-            <label for="qrcode" class="form-label">Sube un QR reciente:</label>
-            <input class="form-control" type="file" id="qrcode" name="qrcode">
-            <input type="hidden" id="qrcode_b64">
-          </div>
-        </div>
-      </div>
-
-      <div class="card bg-dark border-light mb-4">
         <div class="card-header">Códigos de amigo</div>
         <div class="card-body">
           <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 1..." name="dbl-qr-1">
