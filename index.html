@@ -49,4 +49,26 @@
 
   <script src="qr.js"></script>
 </body>
+  <form id="dbl-qr" method="POST" action="#" enctype="multipart/form-data">
+      <div class="card bg-dark border-light mb-4">
+        <div class="card-header">Método de generación QR</div>
+        <div class="card-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="qr-method" id="qr-auto" value="auto" checked>
+            <label class="form-check-label" for="qr-auto">Automático: No requiere archivo</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="qr-method" id="qr-manual" value="manual">
+            <label class="form-check-label" for="qr-manual">Manual: Subir código QR</label>
+          </div>
+          <div class="mt-3">
+            <label for="qrcode" class="form-label">Sube un QR reciente:</label>
+            <input class="form-control" type="file" id="qrcode" name="qrcode">
+            <input type="hidden" id="qrcode_b64">
+          </div>
+        </div>
+      </div>
+
+      
+  </form>
 </html>
