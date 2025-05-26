@@ -43,17 +43,14 @@
 
     <div class="container py-4">
       <form id="dbl-qr" method="POST" action="/" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="friend1" class="form-label">Código de amigo 1:</label>
-          <input type="text" minlength="8" maxlength="8" placeholder="Friend 1 ..." class="form-control" name="dbl-qr-1" />
+        <div class="card bg-dark border-light mb-4">
+        <div class="card-header">Códigos de amigo</div>
+        <div class="card-body">
+          <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 1..." name="dbl-qr-1">
+          <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 2..." name="dbl-qr-2">
+          <input class="form-control mb-3" type="text" minlength="8" maxlength="8" placeholder="Friend 3..." name="dbl-qr-3">
+          <button type="submit" class="btn btn-primary">Generar códigos</button>
         </div>
-        <div class="mb-3">
-          <label for="friend2" class="form-label">Código de amigo 2:</label>
-          <input type="text" minlength="8" maxlength="8" placeholder="Friend 2 ..." class="form-control" name="dbl-qr-2" />
-        </div>
-        <div class="mb-3">
-          <label for="friend3" class="form-label">Código de amigo 3:</label>
-          <input type="text" minlength="8" maxlength="8" placeholder="Friend 3 ..." class="form-control" name="dbl-qr-3" />
         </div>
         <button type="submit" class="btn btn-primary w-100">Generar Códigos</button>
       </form>
