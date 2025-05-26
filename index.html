@@ -31,6 +31,16 @@
         border-color: #888;
         box-shadow: none;
       }
+      fieldset {
+        border: 1px solid #444;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      legend {
+        padding: 0 10px;
+        font-size: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -42,16 +52,18 @@
     </nav>
 
     <div class="container py-4">
-      <form id="dbl-qr">
-        <div class="card bg-dark border-light mb-4">
-          <div class="card-header text-white">Códigos de amigo</div>
-          <div class="card-body">
-            <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 1..." name="dbl-qr-1">
-            <input class="form-control mb-2" type="text" minlength="8" maxlength="8" placeholder="Friend 2..." name="dbl-qr-2">
-            <input class="form-control mb-3" type="text" minlength="8" maxlength="8" placeholder="Friend 3..." name="dbl-qr-3">
-            <button type="submit" class="btn btn-primary w-100">Generar códigos</button>
-          </div>
-        </div>
+      <form id="dbl-qr" method="POST" action="/" enctype="multipart/form-data">
+        <fieldset>
+          <legend>
+            Ingresa hasta tres códigos de amigo para generar códigos QR:
+          </legend>
+
+          <input type="text" minlength="8" maxlength="8" placeholder="Friend 1 ..." autocomplete="dbl-qr-1" name="dbl-qr-1" class="form-control mb-2" />
+          <input type="text" minlength="8" maxlength="8" placeholder="Friend 2 ..." autocomplete="dbl-qr-2" name="dbl-qr-2" class="form-control mb-2" />
+          <input type="text" minlength="8" maxlength="8" placeholder="Friend 3 ..." autocomplete="dbl-qr-3" name="dbl-qr-3" class="form-control mb-2" />
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary w-100">Generar Códigos</button>
       </form>
 
       <div class="row mt-4 qr-display text-center">
