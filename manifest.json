@@ -1,11 +1,11 @@
 {
   "name": "HotCoffe QR Generator",
   "short_name": "HotCoffe QR",
-  "description": "Dragon Ball legends shenron QR generator.",
+  "description": "Genera imagenes QR para el evento de shenron Dragon Ball Legends QR.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#121212",
-  "theme_color": "#0d6efd",
+  "theme_color": "#121212",
   "icons": [
     {
       "src": "GogetaSSJ4K.png",
