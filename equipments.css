@@ -1,0 +1,281 @@
+body { 
+    background-color: #121212; 
+    color: white; 
+    font-family: sans-serif; 
+}
+
+.navbar-brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* --- CARD CONTAINER --- */
+.char-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #000; 
+    /* ADDED: This allows custom backgrounds to work properly */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    cursor: pointer;
+    /* Force a square aspect ratio */
+    aspect-ratio: 16/12; 
+    border: 2px solid transparent; /* Default border */
+}
+
+/* --- CHARACTER IMAGE (Layer 1) --- */
+.char-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Positioned to fill the card */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5; /* Character sits above background */
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect: Zoom ONLY the character image */
+.char-card:hover .char-img {
+    transform: scale(1.15);
+}
+
+/* --- GRADIENT OVERLAY (Layer 2) --- */
+.gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Covers bottom half */
+    background-size: cover;
+    background-position: bottom;
+    z-index: 3; 
+    opacity: 0.9;
+    pointer-events: none; 
+}
+
+/* --- UL TAG (Layer 3) --- */
+.ul-tag {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 35px; /* Adjust size as needed */
+    height: auto;
+    z-index: 4;
+}
+
+/* --- ELEMENT ICON (Layer 3 - Top Right) --- */
+.element-icon-img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    z-index: 6;
+    filter: drop-shadow(0 0 2px black);
+}
+
+/* --- NAME BAR (Layer 4 - Top) --- */
+.char-name-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 2px 0;
+    z-index: 5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- CSS CLASSES FOR AUTOMATION --- */
+/* These are applied by the JS based on the data attributes */
+.border-red { border-color: #ff0000; }
+.border-pur { border-color: #8a2be2; }
+.border-blu { border-color: #00bfff; }
+.border-grn { border-color: #00ff00; }
+.border-yel { border-color: #ffd700; }
+
+/* --- GUIDE PAGE SPECIFIC STYLES --- */
+
+/* The Header Bar (Mimics Game UI) */
+.game-header-bar {
+    background: linear-gradient(180deg, #e6e6e6 0%, #ffffff 50%, #c0c0c0 100%);
+    border: 2px solid #bfa05f; /* Goldish border */
+    border-radius: 8px;
+    padding: 10px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-char-icon {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.header-text {
+    flex-grow: 1;
+}
+
+.header-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.header-tags {
+    font-size: 0.75rem;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Section Titles (White text with black stroke) */
+.guide-section-title {
+    font-family: 'Impact', sans-serif; /* or heavy sans-serif */
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    text-transform: italic;
+    /* Black Outline Text Effect */
+    text-shadow: 
+        -2px -2px 0 #000,  
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+/* Equipment Slot Styles */
+.equip-group {
+    background: rgba(0, 0, 0, 0.4); /* Slight dark background for groups */
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.equip-slot {
+    width: 70px;
+    height: 70px;
+    background-color: #222;
+    border: 2px solid #ffd700; /* Gold Border */
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.equip-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.equip-rank {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    color: #ffd700;
+    font-size: 0.6rem;
+    padding: 1px 3px;
+    font-weight: bold;
+}
+
+/* Team Build Styles */
+.team-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.team-char-box {
+    width: 80px;
+    text-align: center;
+}
+
+.team-char-img {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    background: #000;
+}
+
+/* --- Header Image Replacements --- */
+.rarity-img {
+    height: 24px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.element-img {
+    height: 18px;
+    margin-right: -5px;
+    vertical-align: text-top;
+}
+
+/* --- Equipment Slot Overhaul (Layers) --- */
+.equip-slot {
+    width: 70px;
+    height: 70px;
+    position: relative; /* Essential for layering */
+    background: transparent; /* Remove old background */
+    border: none; /* Remove old CSS border */
+    overflow: visible; /* Allow frame to fit */
+	transition: transform 0.3s ease;
+}
+
+/* Hover Effect: Zoom ONLY the character image */
+.equip-slot:hover {
+    transform: scale(1.15);
+}
+
+/* The actual item image */
+.equip-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85% !important; /* Slightly smaller so it fits inside the frame */
+    height: 85% !important;
+    z-index: 1;
+}
+
+/* The Border/Frame Overlay */
+.equip-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Sits on top */
+    pointer-events: none; /* Let clicks pass through to the item */
+}
