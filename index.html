@@ -57,7 +57,7 @@
       <div class="col" id="qr-display-3"></div>
     </div>
 
-    <!-- Hidden configuration form (renamed and kept inside body) -->
+    <!-- Hidden configuration form (kept inside body, renamed) -->
     <form id="dbl-qr-config" method="POST" action="#" enctype="multipart/form-data" style="display: none;">
       <div class="card bg-dark border-light mb-4">
         <div class="card-header">Método de generación QR</div>
@@ -82,37 +82,39 @@
 
   <script src="qr.js?v=1"></script>
 
-  <!-- Optional: Service Worker registration with update activation helper -->
+  <!-- Service Worker registration + immediate-update helper -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js').then(reg => {
           console.log('Service Worker registered with scope:', reg.scope);
 
-          // If there's a waiting worker, tell it to skip waiting so new SW activates immediately.
+          // If there's a waiting worker (previously installed but waiting), tell it to activate
           if (reg.waiting) {
             reg.waiting.postMessage({ type: 'SKIP_WAITING' });
           }
 
-          // Listen for updates and prompt or activate immediately as needed
+          // Listen for new worker installation
           reg.addEventListener('updatefound', () => {
             const newWorker = reg.installing;
             newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // new worker installed and there is an old controller: consider forcing activation
-                newWorker.postMessage({ type: 'SKIP_WAITING' });
+              if (newWorker.state === 'installed') {
+                // If controlled by an older SW, request the new one to skip waiting
+                if (navigator.serviceWorker.controller) {
+                  newWorker.postMessage({ type: 'SKIP_WAITING' });
+                }
               }
             });
           });
-        }).catch(err => {
+        }).catch((err) => {
           console.error('Service Worker registration failed:', err);
         });
-      });
 
-      // Accept message from SW to reload page after skipWaiting
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        // Optional: reload to use the new service worker immediately
-        window.location.reload();
+        // When the active controller changes (new SW took control), reload to use updated files
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          console.log('Service Worker controller changed — reloading to activate new content.');
+          window.location.reload();
+        });
       });
     }
   </script>
